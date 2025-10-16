@@ -1,0 +1,19 @@
+CONFIGURATION 5 SETUP
+=====================
+Sessions: 9
+CSV Files: 490.csv
+Time Period: 1:55 PM
+Performance: Best lap 19.280s
+
+COMPONENTS:
+-----------
+Flywheel: V1 Stock
+Carburetor: V2
+Exhaust: V2 Thick Wall
+
+NOTES:
+------
+- 49-minute gap between Sessions 8 and 9
+- Flywheel changed from V2 High-Performance to V1 Stock during 49-minute gap
+- Performance dropped from Configuration 4 due to flywheel change
+- Still using thick wall exhaust

@@ -1,0 +1,7 @@
+Configuration,Test_Sessions,Test_Best_Lap,Q2_Best_Lap,Time_Difference,Percent_Difference,Performance_vs_Qualifying,Flywheel,Carburetor,Exhaust
+Config 1,1-3,0:19.298,0:19.457,-0.159s,-0.82%,FASTER,V2 High-Performance,V1,V1 Stock
+Config 2,4-5,0:19.403,0:19.457,-0.054s,-0.28%,FASTER,V2 High-Performance,V1,V1 Stock
+Config 3,6,0:19.236,0:19.457,-0.221s,-1.14%,FASTER,V2 High-Performance,V1,V2 Thick Wall
+Config 4,7-8,0:19.101,0:19.457,-0.356s,-1.83%,FASTER,V2 High-Performance,V2,V2 Thick Wall
+Config 5,9,0:19.280,0:19.457,-0.177s,-0.91%,FASTER,V1 Stock,V2,V2 Thick Wall
+Config 6,10,0:19.673,0:19.457,+0.216s,+1.11%,SLOWER,V1 Stock,V2,V1 Stock

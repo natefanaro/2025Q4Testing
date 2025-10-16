@@ -1,0 +1,18 @@
+CONFIGURATION 1 SETUP
+=====================
+Sessions: 1, 2, 3
+CSV Files: 471.csv, 472.csv, 473.csv
+Time Period: 11:11 AM - 11:43 AM
+Performance: Best lap 19.298s (Session 3)
+
+COMPONENTS:
+-----------
+Flywheel: V2 High-Performance
+Carburetor: V1
+Exhaust: V1 Stock
+
+NOTES:
+------
+- First configuration of the test day
+- Sessions 1-3 ran consecutively in morning
+- All had stock exhaust before 12:22 PM change

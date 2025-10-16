@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025-10-4 Test Day Analysis</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/theme/black.css">
+    <style>
+        .reveal h1, .reveal h2, .reveal h3 { text-transform: none; }
+        .reveal section img { border: none; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        .config-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; font-size: 0.7em; }
+        .config-card { background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px; border: 2px solid #ffcc00; }
+        .config-card.winner { border-color: #00ff00; background: rgba(0,255,0,0.1); }
+        .lap-time { font-size: 1.8em; color: #ffcc00; font-weight: bold; margin: 10px 0; }
+        .delta { font-weight: bold; font-size: 1.2em; }
+        .faster { color: #00ff00; }
+        .slower { color: #ff4444; }
+        .key-findings { text-align: left; font-size: 0.8em; }
+        .key-findings li { margin: 15px 0; }
+        .viz-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        .viz-grid img { width: 100%; height: auto; }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- Title Slide -->
+            <section data-background-gradient="linear-gradient(135deg, #1e3c72 0%, #2a5298 100%)">
+                <h1>🏁 2025-10-4 Test Day</h1>
+                <h3>MXK Karting Performance Analysis</h3>
+                <p>Component Testing & Optimization</p>
+                <p style="font-size: 0.8em; margin-top: 40px;">6 Configurations | 10 Sessions | Race 23 Q2 Baseline: 19.457s</p>
+            </section>
+
+            <!-- Configuration Overview -->
+            <section>
+                <h2 style="margin-bottom: 10px;">⚙️ Configurations Tested</h2>
+                <div style="font-size: 0.65em; text-align: left; margin: 0 auto; max-width: 95%;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: #1e3c72; color: white;">
+                                <th style="padding: 8px; text-align: left;">Config</th>
+                                <th style="padding: 8px; text-align: left;">Flywheel</th>
+                                <th style="padding: 8px; text-align: left;">Carburetor</th>
+                                <th style="padding: 8px; text-align: left;">Exhaust</th>
+                                <th style="padding: 8px; text-align: center;">Best Lap</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="background: rgba(255,255,255,0.05);">
+                                <td style="padding: 6px; font-weight: bold;">Config 1</td>
+                                <td style="padding: 6px;">V2 High-Performance</td>
+                                <td style="padding: 6px;">V1</td>
+                                <td style="padding: 6px;">V1 Stock</td>
+                                <td style="padding: 6px; text-align: center; color: #00ff00; font-weight: bold;">19.298s</td>
+                            </tr>
+                            <tr style="background: rgba(255,255,255,0.02);">
+                                <td style="padding: 6px; font-weight: bold;">Config 2</td>
+                                <td style="padding: 6px;">V2 High-Performance</td>
+                                <td style="padding: 6px;">V1</td>
+                                <td style="padding: 6px;">V1 Stock</td>
+                                <td style="padding: 6px; text-align: center; color: #00ff00; font-weight: bold;">19.403s</td>
+                            </tr>
+                            <tr style="background: rgba(255,255,255,0.05);">
+                                <td style="padding: 6px; font-weight: bold;">Config 3</td>
+                                <td style="padding: 6px;">V2 High-Performance</td>
+                                <td style="padding: 6px;">V1</td>
+                                <td style="padding: 6px;">V2 Thick Wall</td>
+                                <td style="padding: 6px; text-align: center; color: #00ff00; font-weight: bold;">19.236s</td>
+                            </tr>
+                            <tr style="background: rgba(0,255,0,0.15); border: 2px solid #00ff00;">
+                                <td style="padding: 6px; font-weight: bold;">Config 4 🏆</td>
+                                <td style="padding: 6px; font-weight: bold;">V2 High-Performance</td>
+                                <td style="padding: 6px; font-weight: bold;">V2</td>
+                                <td style="padding: 6px; font-weight: bold;">V2 Thick Wall</td>
+                                <td style="padding: 6px; text-align: center; color: #00ff00; font-weight: bold; font-size: 1.2em;">19.101s</td>
+                            </tr>
+                            <tr style="background: rgba(255,255,255,0.05);">
+                                <td style="padding: 6px; font-weight: bold;">Config 5</td>
+                                <td style="padding: 6px;">V1 Stock</td>
+                                <td style="padding: 6px;">V2</td>
+                                <td style="padding: 6px;">V2 Thick Wall</td>
+                                <td style="padding: 6px; text-align: center; color: #00ff00; font-weight: bold;">19.280s</td>
+                            </tr>
+                            <tr style="background: rgba(255,255,255,0.02);">
+                                <td style="padding: 6px; font-weight: bold;">Config 6</td>
+                                <td style="padding: 6px;">V1 Stock</td>
+                                <td style="padding: 6px;">V2</td>
+                                <td style="padding: 6px;">V1 Stock</td>
+                                <td style="padding: 6px; text-align: center; color: #ff4444; font-weight: bold;">19.673s</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="text-align: center; margin-top: 10px; color: #ffcc00;"><strong>Baseline:</strong> Race 23 Q2 Qualifying - 19.457s</p>
+                </div>
+            </section>
+
+            <!-- Executive Summary -->
+            <section>
+                <h2>📊 Executive Summary</h2>
+                <div class="key-findings">
+                    <ul>
+                        <li>✓ <strong>Configuration 4</strong> achieved the fastest lap: <strong>19.101s</strong></li>
+                        <li>✓ <strong>0.356s faster</strong> than Race 23 Q2 qualifying baseline</li>
+                        <li>✓ <strong>5 of 6 configurations</strong> beat qualifying</li>
+                        <li>✓ <strong>V2 Flywheel + V2 Carb + V2 Exhaust</strong> = Optimal Setup</li>
+                        <li>✓ Performance range: 0.572s spread between best and worst</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Performance Comparison Chart -->
+            <section>
+                <h2>Performance Comparison</h2>
+                <img src="images/configuration_comparison.png" style="max-height: 600px;">
+            </section>
+
+            <!-- Component Impact -->
+            <section>
+                <h2>Component Impact Analysis</h2>
+                <img src="images/component_impact.png" style="max-height: 600px;">
+            </section>
+
+            <!-- Configuration 1 -->
+            <section>
+                <h2>Configuration 1</h2>
+                <div class="config-grid">
+                    <div>
+                        <div class="lap-time">19.298s</div>
+                        <div class="delta faster">-0.159s FASTER</div>
+                        <p style="margin-top: 20px;">
+                            🔧 <strong>Flywheel:</strong> V2 High-Performance<br>
+                            ⚙️ <strong>Carburetor:</strong> V1<br>
+                            💨 <strong>Exhaust:</strong> V1 Stock<br>
+                            📅 <strong>Sessions:</strong> 1-3
+                        </p>
+                    </div>
+                    <div>
+                        <img src="visualizations/rpm_maps/config_1_rpm_map.png" style="max-width: 100%;">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Configuration 2 -->
+            <section>
+                <h2>Configuration 2</h2>
+                <div class="config-grid">
+                    <div>
+                        <div class="lap-time">19.403s</div>
+                        <div class="delta faster">-0.054s FASTER</div>
+                        <p style="margin-top: 20px;">
+                            🔧 <strong>Flywheel:</strong> V2 High-Performance<br>
+                            ⚙️ <strong>Carburetor:</strong> V1<br>
+                            💨 <strong>Exhaust:</strong> V1 Stock<br>
+                            📅 <strong>Sessions:</strong> 4-5
+                        </p>
+                    </div>
+                    <div>
+                        <img src="visualizations/rpm_maps/config_2_rpm_map.png" style="max-width: 100%;">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Configuration 3 -->
+            <section>
+                <h2>Configuration 3</h2>
+                <div class="config-grid">
+                    <div>
+                        <div class="lap-time">19.236s</div>
+                        <div class="delta faster">-0.221s FASTER</div>
+                        <p style="margin-top: 20px;">
+                            🔧 <strong>Flywheel:</strong> V2 High-Performance<br>
+                            ⚙️ <strong>Carburetor:</strong> V1<br>
+                            💨 <strong>Exhaust:</strong> V2 Thick Wall<br>
+                            📅 <strong>Sessions:</strong> 6
+                        </p>
+                    </div>
+                    <div>
+                        <img src="visualizations/rpm_maps/config_3_rpm_map.png" style="max-width: 100%;">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Configuration 4 - WINNER -->
+            <section data-background-color="#003300">
+                <h2>Configuration 4 🏆 WINNER</h2>
+                <div class="config-grid">
+                    <div>
+                        <div class="lap-time" style="color: #00ff00; font-size: 2.5em;">19.101s</div>
+                        <div class="delta faster" style="font-size: 1.5em;">-0.356s FASTER</div>
+                        <p style="margin-top: 20px;">
+                            🔧 <strong>Flywheel:</strong> V2 High-Performance<br>
+                            ⚙️ <strong>Carburetor:</strong> V2<br>
+                            💨 <strong>Exhaust:</strong> V2 Thick Wall<br>
+                            📅 <strong>Sessions:</strong> 7-8
+                        </p>
+                    </div>
+                    <div>
+                        <img src="visualizations/rpm_maps/config_4_rpm_map.png" style="max-width: 100%;">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Configuration 5 -->
+            <section>
+                <h2>Configuration 5</h2>
+                <div class="config-grid">
+                    <div>
+                        <div class="lap-time">19.280s</div>
+                        <div class="delta faster">-0.177s FASTER</div>
+                        <p style="margin-top: 20px;">
+                            🔧 <strong>Flywheel:</strong> V1 Stock<br>
+                            ⚙️ <strong>Carburetor:</strong> V2<br>
+                            💨 <strong>Exhaust:</strong> V2 Thick Wall<br>
+                            📅 <strong>Sessions:</strong> 9
+                        </p>
+                    </div>
+                    <div>
+                        <img src="visualizations/rpm_maps/config_5_rpm_map.png" style="max-width: 100%;">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Configuration 6 -->
+            <section data-background-color="#330000">
+                <h2>Configuration 6</h2>
+                <div class="config-grid">
+                    <div>
+                        <div class="lap-time" style="color: #ff4444;">19.673s</div>
+                        <div class="delta slower">+0.216s SLOWER</div>
+                        <p style="margin-top: 20px;">
+                            🔧 <strong>Flywheel:</strong> V1 Stock<br>
+                            ⚙️ <strong>Carburetor:</strong> V2<br>
+                            💨 <strong>Exhaust:</strong> V1 Stock<br>
+                            📅 <strong>Sessions:</strong> 10
+                        </p>
+                    </div>
+                    <div>
+                        <img src="visualizations/rpm_maps/config_6_rpm_map.png" style="max-width: 100%;">
+                    </div>
+                </div>
+            </section>
+
+            <!-- RPM Maps - Vertical Slides -->
+            <section>
+                <section>
+                    <h2>RPM Maps - Config 1</h2>
+                    <img src="visualizations/rpm_maps/config_1_rpm_map.png" style="max-height: 600px;">
+                    <p style="font-size: 0.6em; margin-top: 20px;">↓ Press Down for Next Config</p>
+                </section>
+
+                <section>
+                    <h2>RPM Maps - Config 2</h2>
+                    <img src="visualizations/rpm_maps/config_2_rpm_map.png" style="max-height: 600px;">
+                </section>
+
+                <section>
+                    <h2>RPM Maps - Config 3</h2>
+                    <img src="visualizations/rpm_maps/config_3_rpm_map.png" style="max-height: 600px;">
+                </section>
+
+                <section>
+                    <h2>RPM Maps - Config 4 🏆</h2>
+                    <img src="visualizations/rpm_maps/config_4_rpm_map.png" style="max-height: 600px;">
+                </section>
+
+                <section>
+                    <h2>RPM Maps - Config 5</h2>
+                    <img src="visualizations/rpm_maps/config_5_rpm_map.png" style="max-height: 600px;">
+                </section>
+
+                <section>
+                    <h2>RPM Maps - Config 6</h2>
+                    <img src="visualizations/rpm_maps/config_6_rpm_map.png" style="max-height: 600px;">
+                </section>
+            </section>
+
+            <!-- Qualifying Overlays - Vertical Slides -->
+            <section>
+                <section>
+                    <h2>Config 1 vs Qualifying Overlay</h2>
+                    <img src="visualizations/rpm_overlays/config_1_vs_qualifying_overlay.png" style="max-height: 600px;">
+                    <p style="font-size: 0.6em; margin-top: 20px;">↓ Press Down for Next Config</p>
+                </section>
+
+                <section>
+                    <h2>Config 2 vs Qualifying Overlay</h2>
+                    <img src="visualizations/rpm_overlays/config_2_vs_qualifying_overlay.png" style="max-height: 600px;">
+                </section>
+
+                <section>
+                    <h2>Config 3 vs Qualifying Overlay</h2>
+                    <img src="visualizations/rpm_overlays/config_3_vs_qualifying_overlay.png" style="max-height: 600px;">
+                </section>
+
+                <section>
+                    <h2>Config 4 vs Qualifying Overlay 🏆</h2>
+                    <img src="visualizations/rpm_overlays/config_4_vs_qualifying_overlay.png" style="max-height: 600px;">
+                </section>
+
+                <section>
+                    <h2>Config 5 vs Qualifying Overlay</h2>
+                    <img src="visualizations/rpm_overlays/config_5_vs_qualifying_overlay.png" style="max-height: 600px;">
+                </section>
+
+                <section>
+                    <h2>Config 6 vs Qualifying Overlay</h2>
+                    <img src="visualizations/rpm_overlays/config_6_vs_qualifying_overlay.png" style="max-height: 600px;">
+                </section>
+            </section>
+
+            <!-- RPM Differentials - Vertical Slides -->
+            <section>
+                <section>
+                    <h2>RPM Differential - Config 1</h2>
+                    <img src="visualizations/rpm_differentials/config_1_rpm_differential.png" style="max-height: 600px;">
+                    <p style="font-size: 0.6em; margin-top: 20px;">↓ Press Down for Next Config</p>
+                </section>
+
+                <section>
+                    <h2>RPM Differential - Config 2</h2>
+                    <img src="visualizations/rpm_differentials/config_2_rpm_differential.png" style="max-height: 600px;">
+                </section>
+
+                <section>
+                    <h2>RPM Differential - Config 3</h2>
+                    <img src="visualizations/rpm_differentials/config_3_rpm_differential.png" style="max-height: 600px;">
+                </section>
+
+                <section>
+                    <h2>RPM Differential - Config 4 🏆</h2>
+                    <img src="visualizations/rpm_differentials/config_4_rpm_differential.png" style="max-height: 600px;">
+                </section>
+
+                <section>
+                    <h2>RPM Differential - Config 5</h2>
+                    <img src="visualizations/rpm_differentials/config_5_rpm_differential.png" style="max-height: 600px;">
+                </section>
+
+                <section>
+                    <h2>RPM Differential - Config 6</h2>
+                    <img src="visualizations/rpm_differentials/config_6_rpm_differential.png" style="max-height: 600px;">
+                </section>
+            </section>
+
+            <!-- 3D Views -->
+            <section>
+                <h2>🎮 Interactive 3D Track Overlays</h2>
+                <p>Explore interactive 3D visualizations:</p>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; font-size: 0.8em; margin-top: 30px;">
+                    <a href="visualizations/3d_overlays/config_1_vs_qualifying_3d.html" target="_blank" style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 5px; color: white; text-decoration: none;">Config 1 3D →</a>
+                    <a href="visualizations/3d_overlays/config_2_vs_qualifying_3d.html" target="_blank" style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 5px; color: white; text-decoration: none;">Config 2 3D →</a>
+                    <a href="visualizations/3d_overlays/config_3_vs_qualifying_3d.html" target="_blank" style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 5px; color: white; text-decoration: none;">Config 3 3D →</a>
+                    <a href="visualizations/3d_overlays/config_4_vs_qualifying_3d.html" target="_blank" style="background: rgba(0,255,0,0.3); padding: 15px; border-radius: 5px; color: white; text-decoration: none;">🏆 Config 4 3D →</a>
+                    <a href="visualizations/3d_overlays/config_5_vs_qualifying_3d.html" target="_blank" style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 5px; color: white; text-decoration: none;">Config 5 3D →</a>
+                    <a href="visualizations/3d_overlays/config_6_vs_qualifying_3d.html" target="_blank" style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 5px; color: white; text-decoration: none;">Config 6 3D →</a>
+                </div>
+            </section>
+
+            <!-- Conclusions -->
+            <section>
+                <h2>🏁 Conclusions</h2>
+                <div style="text-align: left; font-size: 0.85em;">
+                    <h3>Optimal Configuration</h3>
+                    <p><strong>Configuration 4</strong> delivered the best performance: <strong>19.101s</strong></p>
+
+                    <h3 style="margin-top: 30px;">Component Priority</h3>
+                    <ol>
+                        <li><strong>Flywheel</strong> - Largest performance impact</li>
+                        <li><strong>Exhaust</strong> - Significant power delivery improvement</li>
+                        <li><strong>Carburetor</strong> - Fine-tuning performance</li>
+                    </ol>
+
+                    <h3 style="margin-top: 30px;">Recommendation</h3>
+                    <p>Race with <strong>V2 Flywheel + V2 Carb + V2 Thick Wall Exhaust</strong></p>
+                </div>
+            </section>
+
+            <!-- Thank You -->
+            <section data-background-gradient="linear-gradient(135deg, #1e3c72 0%, #2a5298 100%)">
+                <h1>Thank You!</h1>
+                <p>2025-10-04 Test Day Analysis</p>
+                <p style="font-size: 0.8em; margin-top: 40px;">MXK Karting | Performance Data Analysis</p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/reveal.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            controls: true,
+            progress: true,
+            center: true,
+            transition: 'slide',
+            backgroundTransition: 'fade'
+        });
+    </script>
+</body>
+</html>

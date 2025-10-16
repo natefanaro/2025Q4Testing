@@ -1,0 +1,19 @@
+CONFIGURATION 2 SETUP
+=====================
+Sessions: 4, 5
+CSV Files: 485.csv, 486.csv
+Time Period: 11:57 AM - 12:07 PM
+Performance: Best lap 19.403s (Sessions 4 & 5)
+
+COMPONENTS:
+-----------
+Flywheel: V2 High-Performance
+Carburetor: V1
+Exhaust: V1 Stock
+
+NOTES:
+------
+- Same flywheel as Configuration 1 (V2 High-Performance)
+- Same carburetor as Configuration 1 (V1) - carburetor change happened later between Sessions 6 & 7
+- Still using stock exhaust before 12:22 PM change
+- Performance slightly worse than Configuration 1 despite same components (driver/track conditions?)

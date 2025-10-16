@@ -1,0 +1,7 @@
+configuration,sessions,best_lap_time,race23_baseline,time_difference,percent_change,status,flywheel,carburetor,exhaust
+1,1-3,19.298,19.141,+0.157,+0.82%,SLOWER,V2 High-Performance,V1,V1 Stock
+2,4-5,19.403,19.141,+0.262,+1.37%,SLOWER,V2 High-Performance,V1,V1 Stock
+3,6,19.236,19.141,+0.095,+0.50%,SLOWER,V2 High-Performance,V1,V2 Thick Wall
+4,7-8,19.101,19.141,-0.040,-0.21%,FASTER,V2 High-Performance,V2,V2 Thick Wall
+5,9,19.280,19.141,+0.139,+0.73%,SLOWER,V1 Stock,V2,V2 Thick Wall
+6,10,19.673,19.141,+0.532,+2.78%,SLOWER,V1 Stock,V2,V1 Stock

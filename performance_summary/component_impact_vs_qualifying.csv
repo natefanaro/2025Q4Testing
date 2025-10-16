@@ -1,0 +1,7 @@
+Component_Type,Component_Version,Best_Lap_Achieved,vs_Best_Qualifying,Configurations_Using,Impact_Rating
+Flywheel,V2 High-Performance,0:19.101,-0.356s,"Configs 1,2,3,4",High Performance
+Flywheel,V1 Stock,0:19.280,-0.177s,"Configs 5,6",Lower Performance
+Carburetor,V2,0:19.101,-0.356s,"Configs 4,5,6",Peak Performance
+Carburetor,V1,0:19.236,-0.221s,"Configs 1,2,3",Good Performance
+Exhaust,V2 Thick Wall,0:19.101,-0.356s,"Configs 3,4,5",High Performance
+Exhaust,V1 Stock,0:19.298,-0.159s,"Configs 1,2,6",Standard Performance

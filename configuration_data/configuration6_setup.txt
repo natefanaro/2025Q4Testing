@@ -1,0 +1,19 @@
+CONFIGURATION 6 SETUP
+=====================
+Sessions: 10
+CSV Files: 492.csv
+Time Period: 2:26 PM
+Performance: Best lap 19.673s
+
+COMPONENTS:
+-----------
+Flywheel: V1 Stock
+Carburetor: V2
+Exhaust: V1 Stock
+
+NOTES:
+------
+- Returned to stock exhaust for final session
+- Performance comparison test vs thick wall exhaust
+- Slower times confirm thick wall exhaust benefit
+- Final configuration of test day
